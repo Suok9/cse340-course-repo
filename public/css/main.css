@@ -1,30 +1,188 @@
-html, body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+:root {
+    color-scheme: light;
+    --color-ink: #19322d;
+    --color-muted: #52635d;
+    --color-brand: #145a48;
+    --color-brand-dark: #0d4034;
+    --color-accent: #d8963e;
+    --color-page: #f4f6f1;
+    --color-surface: #ffffff;
+    --color-border: #dce5dc;
+    --shadow-card: 0 0.5rem 1.5rem rgb(25 50 45 / 8%);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-ink);
+    background: var(--color-page);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    nav {
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    line-height: 1.65;
+}
 
-        li {
-            display: inline;
-            margin-right: 15px;
-        }
+nav {
+    background: var(--color-brand-dark);
+    box-shadow: 0 0.25rem 1rem rgb(13 64 52 / 16%);
+}
 
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    list-style: none;
+}
 
-            &:hover {
-                color: #0066cc;
-            }
-        }
+nav a {
+    display: inline-block;
+    padding: 0.65rem 1rem;
+    border-radius: 0.4rem;
+    color: #ffffff;
+    font-size: 0.98rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 160ms ease;
+}
+
+nav a:hover {
+    background: #226b57;
+}
+
+a:focus-visible {
+    outline: 3px solid #f3c878;
+    outline-offset: 3px;
+}
+
+main {
+    width: min(100% - 2rem, 68rem);
+    margin: 3rem auto;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+}
+
+h1,
+h2 {
+    color: var(--color-brand-dark);
+    line-height: 1.2;
+}
+
+h1 {
+    margin: 0 0 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--color-accent);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    letter-spacing: -0.035em;
+}
+
+h2 {
+    margin: 1.75rem 0 0.75rem;
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
+p {
+    max-width: 65ch;
+    color: var(--color-muted);
+    font-size: 1.08rem;
+}
+
+main ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+main li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    min-height: 5rem;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-brand);
+    border-radius: 0.65rem;
+    background: #fbfcfa;
+    color: var(--color-ink);
+    font-size: 1.05rem;
+    overflow-wrap: anywhere;
+}
+
+main li img {
+    flex: 0 0 5rem;
+    width: 5rem;
+    height: 5rem;
+    object-fit: contain;
+}
+
+main li strong {
+    color: var(--color-brand-dark);
+}
+
+.main-logo {
+    display: block;
+    width: min(100%, 32rem);
+    max-height: 22rem;
+    margin: 2rem auto 0;
+    object-fit: contain;
+}
+
+footer {
+    margin-top: auto;
+    padding: 1.25rem 1rem;
+    background: var(--color-brand-dark);
+    color: #ffffff;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 38rem) {
+    nav ul {
+        justify-content: center;
+        gap: 0.15rem;
+        padding: 0.6rem 0.75rem;
     }
-} 
+
+    nav a {
+        padding: 0.55rem 0.7rem;
+        font-size: 0.92rem;
+    }
+
+    main {
+        width: min(100% - 1.25rem, 68rem);
+        margin: 1.25rem auto;
+        padding: 1.35rem;
+        border-radius: 0.75rem;
+    }
+
+    main li {
+        padding: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
