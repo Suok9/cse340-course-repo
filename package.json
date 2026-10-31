@@ -4,9 +4,9 @@
   "description": "Course repository for CSE 340",
   "main": "server.js",
   "scripts": {
-  "dev": "nodemon",
-  "start": "node server.js"
-},
+    "dev": "nodemon",
+    "start": "node server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Suok9/cse340-course-repo.git"
@@ -20,11 +20,10 @@
   },
   "homepage": "https://github.com/Suok9/cse340-course-repo#readme",
   "dependencies": {
+    "ejs": "^7.0.2",
     "express": "^5.3.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
   }
 }
-
-  
