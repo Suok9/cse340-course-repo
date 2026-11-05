@@ -2,12 +2,18 @@
 
 <main>
     <h1><%= title %></h1>
-     <h2>Upcoming Service Projects</h2>
-<ul>
-    <li>Park Cleanup - Join us to clean up local parks and make them beautiful!</li>
-    <li>Food Drive - Help collect and distribute food to those in need.</li>
-    <li>Community Tutoring - Volunteer to tutor students in various subjects.</li>
-</ul>
+    <h2>Upcoming Service Projects</h2>
+    <% if (projects.length > 0) { %>
+        <ul>
+            <% projects.forEach((project) => { %>
+                <li>
+                    <strong><%= new Intl.DateTimeFormat(undefined, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).format(new Date(project.date)) %>: <%= project.title %> (<em><%= project.organization_name %></em>)</strong>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No service projects are currently available.</p>
+    <% } %>
 </main>
 
 <%- include('partials/footer') %>
