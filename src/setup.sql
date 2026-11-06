@@ -50,3 +50,60 @@ VALUES
 (3, 'Community Health Fair', 'Organize a health fair providing free screenings and wellness resources.', 'Springfield Community Center', '2024-08-28'),
 (3, 'Holiday Toy Drive', 'Collect and distribute toys to children in need during the holiday season.', 'UnityServe Headquarters, Springfield', '2024-12-01');
 
+
+Add service project categories to the database. Categories have the following requirements:
+
+Each category has a unique ID and a name.
+A service project can belong to one or more categories.
+A category can be associated with one or more service projects.
+Complete the following:
+
+Decide on the table(s) you need.
+Create the table(s) in your database.
+Make sure to add any constraints you need.
+Add at least 3 categories relevant to service projects.
+Associate each project in your database with at least one category, start now.
+
+CREATE TABLE category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+INSERT INTO category (name)
+VALUES
+('Environmental Conservation'),
+('Community Development'),
+('Education and Mentorship');
+
+CREATE TABLE service_project_category (
+    project_id INTEGER NOT NULL,
+    category_id INTEGER NOT NULL,
+    PRIMARY KEY (project_id, category_id),
+    CONSTRAINT fk_project
+        FOREIGN KEY (project_id)
+        REFERENCES service_project(project_id),
+    CONSTRAINT fk_category
+        FOREIGN KEY (category_id)
+        REFERENCES category(category_id)
+);
+
+INSERT INTO service_project_category (project_id, category_id)
+VALUES
+(1, 1), -- Community Park Renovation -> Environmental Conservation
+(2, 1), -- Neighborhood Cleanup -> Environmental Conservation
+(3, 2), -- Playground Construction -> Community Development
+(4, 2), -- Community Mural Painting -> Community Development
+(5, 1), -- Recycling Awareness Campaign -> Environmental Conservation
+(6, 1), -- Urban Garden Workshop -> Environmental Conservation
+(7, 1), -- Composting Workshop -> Environmental Conservation
+(8, 2), -- Farm-to-Table Event -> Community Development
+(9, 3), -- Community Seed Swap -> Education and Mentorship
+(10, 1), -- Urban Beekeeping Seminar -> Environmental Conservation
+(11, 2), -- Charity Food Drive -> Community Development
+(12, 3), -- Senior Assistance Program -> Education and Mentorship
+(13, 3), -- Youth Mentorship Program -> Education and Mentorship
+(14, 2), -- Community Health Fair -> Community Development
+(15, 2); -- Holiday Toy Drive -> Community Development  
+
+
+give me a function to get all categories and related projects.Here is a function to get all categories from the database:
