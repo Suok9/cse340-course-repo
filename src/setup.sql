@@ -51,18 +51,7 @@ VALUES
 (3, 'Holiday Toy Drive', 'Collect and distribute toys to children in need during the holiday season.', 'UnityServe Headquarters, Springfield', '2024-12-01');
 
 
-Add service project categories to the database. Categories have the following requirements:
 
-Each category has a unique ID and a name.
-A service project can belong to one or more categories.
-A category can be associated with one or more service projects.
-Complete the following:
-
-Decide on the table(s) you need.
-Create the table(s) in your database.
-Make sure to add any constraints you need.
-Add at least 3 categories relevant to service projects.
-Associate each project in your database with at least one category, start now.
 
 CREATE TABLE category (
     category_id SERIAL PRIMARY KEY,
@@ -105,5 +94,3 @@ VALUES
 (14, 2), -- Community Health Fair -> Community Development
 (15, 2); -- Holiday Toy Drive -> Community Development  
 
-
-give me a function to get all categories and related projects.Here is a function to get all categories from the database:
