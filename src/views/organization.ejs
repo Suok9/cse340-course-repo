@@ -1,0 +1,24 @@
+
+<!-- A list of the service projects associated with the organization.
+  Each service project should be a link to the service project details page. 
+  You have not created this page yet, but you will in the team activity this week. 
+  The URL for the links should be /project/[id] where [id] is the ID of the service project. 
+  (This link will not work yet, but as soon as you create the page in your team activity it will work.) -->
+
+<%- include('partials/header') %>
+
+    <main>
+        <h1><%= title %></h1>
+        
+        <h2><%= organizationDetails.name %></h2>
+        <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.name %> logo">
+        <p>Description: <%= organizationDetails.description %></p>
+
+        <h3>Service Projects:</h3>
+        <ul>
+            <% projects.forEach(project => { %>
+                <li><a href="/project/<%= project.id %>"><%= project.title %></a></li> <!---or project.name instead of project.title--->>
+            <% }); %>
+        </ul>
+    </main>
+<%- include('partials/footer') %>
