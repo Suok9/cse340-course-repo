@@ -1,8 +1,8 @@
 import db from './db.js';
 
-async function getAllCategories() {
+const getAllCategories = async () => {
     const { rows } = await db.query('SELECT * FROM category');
     return rows;
-}
+};
 
 export { getAllCategories };
