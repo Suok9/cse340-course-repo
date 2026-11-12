@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+
+<main>
+    <h1><%= title %></h1>
+    <article>
+        <h2><%= projectDetails.title %></h2>
+        <p><%= projectDetails.description %></p>
+        <p>
+            Date:
+            <%= new Intl.DateTimeFormat(undefined, {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                timeZone: 'UTC'
+            }).format(new Date(projectDetails.date)) %>
+        </p>
+        <p>Location: <%= projectDetails.location %></p>
+        <p>
+            Partner organization:
+            <a href="/organization/<%= projectDetails.organization_id %>"><%= projectDetails.organization_name %></a>
+        </p>
+    </article>
+</main>
+
+<%- include('partials/footer') %>
