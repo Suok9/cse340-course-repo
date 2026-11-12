@@ -17,8 +17,9 @@
         <h3>Service Projects:</h3>
         <ul>
             <% projects.forEach(project => { %>
-                <li><a href="/project/<%= project.id %>"><%= project.title %></a></li> <!---or project.name instead of project.title--->>
+                <li><a href="/project/<%= project.project_id %>"><%= project.title %></a></li> <!---or project.name instead of project.title--->>
             <% }); %>
         </ul>
     </main>
 <%- include('partials/footer') %>
+
