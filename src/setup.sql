@@ -93,4 +93,11 @@ VALUES
 (13, 3), -- Youth Mentorship Program -> Education and Mentorship
 (14, 2), -- Community Health Fair -> Community Development
 (15, 2); -- Holiday Toy Drive -> Community Development  
-
+ i have a category details page now i want to show all the service projects related to that category how can i do thatTo show all the service projects related to a specific category on your category details page, you can perform a SQL query that joins the `service_project`, `service_project_category`, and `category` tables. This will allow you to retrieve all the service projects associated with a given category. Below is an example of how you can do this:1. **SQL Query**: You can use the following SQL query to get all service projects for a specific category. Replace `:category_id` with the actual ID of the category you want to display.
+```sql
+SELECT sp.project_id, sp.title
+FROM service_project sp
+JOIN service_project_category spc ON sp.project_id = spc.project_id
+JOIN category c ON spc.category_id = c.category_id
+WHERE c.category_id = :category_id;
+```

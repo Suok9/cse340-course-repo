@@ -19,6 +19,15 @@
             Partner organization:
             <a href="/organization/<%= projectDetails.organization_id %>"><%= projectDetails.organization_name %></a>
         </p>
+        <% if (categories.length > 0) { %>
+            <p>
+                Categories:
+                <% categories.forEach((category, index) => { %>
+                    <% if (index > 0) { %>, <% } %>
+                    <a href="/category/<%= category.category_id %>"><%= category.name %></a>
+                <% }) %>
+            </p>
+        <% } %>
     </article>
 </main>
 
