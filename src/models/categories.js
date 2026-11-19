@@ -16,6 +16,37 @@ const getCategoryById = async (categoryId) => {
     return rows.length > 0 ? rows[0] : null;
 };
 
+const createCategory = async (name) => {
+    const query = `
+        INSERT INTO category (name)
+        VALUES ($1)
+        RETURNING category_id;
+    `;
+    const { rows } = await db.query(query, [name]);
+
+    if (rows.length === 0) {
+        throw new Error('Failed to create category');
+    }
+
+    return rows[0].category_id;
+};
+
+const updateCategory = async (categoryId, name) => {
+    const query = `
+        UPDATE category
+        SET name = $1
+        WHERE category_id = $2
+        RETURNING category_id;
+    `;
+    const { rows } = await db.query(query, [name, categoryId]);
+
+    if (rows.length === 0) {
+        throw new Error('Category not found');
+    }
+
+    return rows[0].category_id;
+};
+
 const getCategoriesByProjectId = async (projectId) => {
     const query = `
         SELECT category.category_id, category.name
@@ -54,4 +85,11 @@ const updateCategoryAssignments = async(projectId, categoryIds) => {
     }
 }
 
-export { getAllCategories, getCategoryById, getCategoriesByProjectId, updateCategoryAssignments };
+export {
+    getAllCategories,
+    getCategoryById,
+    createCategory,
+    updateCategory,
+    getCategoriesByProjectId,
+    updateCategoryAssignments
+};
